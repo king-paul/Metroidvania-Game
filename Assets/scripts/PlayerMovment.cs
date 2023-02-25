@@ -22,6 +22,7 @@ public class PlayerMovment : MonoBehaviour
     private Rigidbody2D body;
     private Transform camera;
     private SpriteRenderer sprite;
+    private Animator animator;
 
     private bool onGround = false;
     private float inputX;
@@ -35,6 +36,7 @@ public class PlayerMovment : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         camera = Camera.main.transform;
 
         if (usePlayerPoistionAsOffset)
@@ -47,7 +49,7 @@ public class PlayerMovment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        inputX = Input.GetAxisRaw("Horizontal");        
+        inputX = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && onGround)
         {
@@ -60,7 +62,12 @@ public class PlayerMovment : MonoBehaviour
         if(Input.GetButtonUp("Jump"))
         {
             jumpPressed = false;
-        }  
+        }
+
+        if (onGround && body.velocity.x != 0)
+            animator.SetBool("walking", true);
+        else if (!onGround || body.velocity.x == 0)
+            animator.SetBool("walking", false);
 
     }
 
