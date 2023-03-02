@@ -1,7 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -18,6 +23,14 @@ public class PlayerMovment : MonoBehaviour
     public bool usePlayerPoistionAsOffset = true;
     public Vector2 cameraOffset;
 
+    [Header("Layers")]
+    public LayerMask groundLayer;
+
+    // raycasts
+    private Vector2 leftOffset = new Vector2(-0.4f, -1);
+    private Vector2 rightOffset = new Vector2(0.4f, -1);
+    private float castDistance = 0.2f;
+
     // components
     private Rigidbody2D body;
     private Transform camera;
@@ -30,6 +43,8 @@ public class PlayerMovment : MonoBehaviour
     private bool jumping = false;
 
     private Vector2 jumpPoint;
+
+    private Vector2 velocity = new Vector2();
 
     // Start is called before the first frame update
     void Start()
@@ -69,12 +84,23 @@ public class PlayerMovment : MonoBehaviour
         else if (!onGround || body.velocity.x == 0)
             animator.SetBool("walking", false);
 
+
+        onGround = PlayerOnGround();
+
+        /*if (onGround)
+            Debug.Log("On Ground");
+        else
+            Debug.Log("Not On Ground");*/        
+
     }
 
     private void FixedUpdate()
     {
         // set horizontal velocity
-        body.velocity = new Vector2(inputX * moveSpeed * Time.fixedDeltaTime, body.velocity.y);
+        //if ((!AgainstWallLeft() && inputX < 0) || (!AgainstWallRight() && inputX > 0))
+        //{
+            body.AddForce(new Vector2(inputX * moveSpeed * Time.fixedDeltaTime, 0));
+        //}
 
         if (!onGround)
         {
@@ -89,10 +115,12 @@ public class PlayerMovment : MonoBehaviour
 
         if (jumping && Vector2.Distance(transform.position, jumpPoint) > maxJumpHeight)
         {
-            Debug.Log("Hit max jump height");
+            //Debug.Log("Hit max jump height");
             body.velocity = new Vector2(body.velocity.x, Physics.gravity.y);
             //body.AddForce(Physics.gravity * fallSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
         }
+
+        Debug.Log("Velocity:" + body.velocity);
     }
 
     private void LateUpdate()
@@ -102,17 +130,65 @@ public class PlayerMovment : MonoBehaviour
             sprite.flipX= false;
 
         if (body.velocity.x < 0) // facing left
-            sprite.flipX = true;
-            
+            sprite.flipX = true;            
 
         // make camera follow player
         camera.position = new Vector3(transform.position.x + cameraOffset.x, 
                                       transform.position.y + cameraOffset.y, -10);
     }
 
+    private bool PlayerOnGround()
+    {
+        RaycastHit2D leftCheck = Physics2D.Raycast((Vector2)transform.position + leftOffset, Vector2.down, castDistance, groundLayer);
+        RaycastHit2D rightCheck = Physics2D.Raycast((Vector2)transform.position + rightOffset, Vector2.down, castDistance, groundLayer);
+
+        Debug.DrawRay((Vector2)transform.position + leftOffset, Vector2.down * castDistance, Color.yellow);
+        Debug.DrawRay((Vector2)transform.position + rightOffset, Vector2.down * castDistance, Color.yellow);
+
+        if (leftCheck || rightCheck)
+            return true;
+
+        return false;
+    }
+
+    private bool AgainstWallLeft()
+    {
+        Vector2 midLeftOffset = new Vector2(-0.4f, 0);
+
+        RaycastHit2D leftCheck = Physics2D.Raycast((Vector2)transform.position + leftOffset, Vector2.left, castDistance, groundLayer);      
+        Debug.DrawRay((Vector2)transform.position + midLeftOffset, Vector2.left * castDistance, Color.yellow);
+
+        if (leftCheck)
+        {
+            Debug.Log("Against wall on left");
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool AgainstWallRight()
+    {
+        Vector2 midRightOffset = new Vector2(0.4f, 0);
+
+        RaycastHit2D rightCheck = Physics2D.Raycast((Vector2)transform.position + rightOffset, Vector2.right, castDistance, groundLayer);        
+        Debug.DrawRay((Vector2)transform.position + midRightOffset, Vector2.right * castDistance, Color.yellow);
+
+        if (rightCheck)
+        {
+            Debug.Log("Against wall on right");
+            return true;
+        }
+
+        return false;
+    }
+
+    /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == 3 && transform.position.y > collision.transform.position.y)
+        var tileMap = collision.gameObject.GetComponent<Tilemap>();
+
+        if (collision.gameObject.layer == 3 && TileBelow(tileMap))//transform.position.y > collision.transform.position.y)
         {
             Debug.Log("hit ground");
             onGround = true;
@@ -121,11 +197,34 @@ public class PlayerMovment : MonoBehaviour
     }
 
     private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 3 && transform.position.y > collision.transform.position.y)
+    {        
+        var tileMap = collision.gameObject.GetComponent<Tilemap>();      
+
+        //grid.WorldToCell(collision.transform.position); 
+
+        if (collision.gameObject.layer == 3 && TileBelow(tileMap))//transform.position.y > collision.transform.position.y)
         {
             Debug.Log("left ground");
             onGround = false;
         }
     }
+
+    private bool TileBelow(Tilemap tileMap)
+    {
+        Vector3Int playerPos = tileMap.WorldToCell(transform.position);
+
+        foreach (Vector3Int tilePosition in tileMap.cellBounds.allPositionsWithin)
+        {
+            if (tilePosition.x == playerPos.x && tilePosition.y == playerPos.y - 1)
+            {
+                //Debug.Log("tile position: " + tilePosition);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+    */
+
 }
