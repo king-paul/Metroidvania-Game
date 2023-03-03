@@ -120,7 +120,7 @@ public class PlayerMovment : MonoBehaviour
             //body.AddForce(Physics.gravity * fallSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
         }
 
-        Debug.Log("Velocity:" + body.velocity);
+        //Debug.Log("Velocity:" + body.velocity);
     }
 
     private void LateUpdate()
