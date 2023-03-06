@@ -10,7 +10,6 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     private float distanceTraveled;
     private Vector2 origin;
-
     public Vector2 Direction { get; set; }
 
     // Start is called before the first frame update
@@ -38,8 +37,12 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 7) // enemy layer
+        if (this.gameObject.layer == 8 && // player projectile layer
+            collision.gameObject.layer == 7) // enemy layer
+        {
+            collision.GetComponent<EnemyController>().TakeDamage(1);
             GameObject.Destroy(gameObject);
+        }
     }
 
 }
