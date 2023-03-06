@@ -12,8 +12,7 @@ public class EnemyController : MonoBehaviour
     public Vector2 bulletSpawnOffset;
 
     private int health;
-
-    // Start is called before the first frame update
+   
     void Start()
     {
         health = maxHealth;
@@ -21,7 +20,6 @@ public class EnemyController : MonoBehaviour
         Invoke("FireShot", fireRate);
     }
 
-    // Update is called once per frame
     void Update()
     {
         

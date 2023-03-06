@@ -5,7 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameManager gameManager;
+    public HUD gui;
+
+    [Header("Player Stats")]
     public int startingHealth = 10;
+    public int startingAmmo = 0;
+    public int ammoPerPickup = 5;
 
     [Header("Projectile Firing")]
     public GameObject bulletPrefab;
@@ -14,23 +19,32 @@ public class PlayerController : MonoBehaviour
     public bool continuousFire = true;
 
     private bool canShoot = true;
-    private int health;    
+    private int health;
+    private int ammo;
 
     // Start is called before the first frame update
     void Start()
     {
         health = startingHealth;
+        ammo = startingAmmo;
     }
 
     // Update is called once per frame
     void Update()
     {
         if(canShoot)
-        { 
-            if (continuousFire && Input.GetButton("Fire1"))
-                StartCoroutine(FireShot());
-            else if (Input.GetButtonDown("Fire1"))
-                StartCoroutine(FireShot());
+        {
+            if (ammo > 0)
+            {
+                if (continuousFire && Input.GetButton("Fire1"))
+                    StartCoroutine(FireShot());
+                else if (Input.GetButtonDown("Fire1"))
+                    StartCoroutine(FireShot());
+            }
+            else if(Input.GetButtonDown("Fire1"))
+            {
+                StartCoroutine(gameManager.ShowAlert());
+            }
         }
     }
 
@@ -49,6 +63,9 @@ public class PlayerController : MonoBehaviour
         //bulletInstance.transform.forward = direction;
         bulletInstance.GetComponent<Bullet>().Direction = direction;
 
+        ammo--;
+        gui.SetAmmoText(ammo);
+
         yield return new WaitForSeconds(delayBetweenShot);
 
         canShoot = true;
@@ -58,7 +75,17 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.layer == 9) // enemy projectile layer
         {
-            TakeDamage(1);
+            TakeDamage(1);            
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Ammo")
+        {
+            AddAmmo(ammoPerPickup);
+            GameObject.Destroy(collision.gameObject);
         }
     }
 
@@ -66,12 +93,19 @@ public class PlayerController : MonoBehaviour
     {
         health -= amount;
 
-        Debug.Log("Took " + amount + " damage. Health Left: " + health);
+        //Debug.Log("Took " + amount + " damage. Health Left: " + health);
+        gui.SetHealthText(health);
 
-        if(health <=0)
+        if (health <=0)
         {
             gameManager.EndGame();
         }
+    }
+
+    private void AddAmmo(int Amount)
+    {
+        ammo += ammoPerPickup;
+        gui.SetAmmoText(ammo);
     }
 
 }

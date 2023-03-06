@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject gameOverDialog;
+    public GameObject alertMessage;
+
+    public float alertTime = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,13 @@ public class GameManager : MonoBehaviour
     {
         gameOverDialog.SetActive(true);
         Time.timeScale = 0;        
+    }
+
+    public IEnumerator ShowAlert()
+    {
+        alertMessage.SetActive(true);
+        yield return new WaitForSeconds(alertTime);
+        alertMessage.SetActive(false);
     }
 
 }
