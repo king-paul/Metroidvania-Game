@@ -23,16 +23,12 @@ public class Bullet : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(Direction * speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+        //transform.Translate(Direction * speed * Time.fixedDeltaTime);
 
         distanceTraveled = Vector2.Distance(origin, transform.position);
 
         if (distanceTraveled > maxDistance)
             GameObject.Destroy(gameObject);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        GameObject.Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -41,8 +37,10 @@ public class Bullet : MonoBehaviour
             collision.gameObject.layer == 7) // enemy layer
         {
             collision.GetComponent<EnemyController>().TakeDamage(1);
-            GameObject.Destroy(gameObject);
+            
         }
+
+        GameObject.Destroy(gameObject);
     }
 
 }

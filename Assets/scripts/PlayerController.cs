@@ -87,6 +87,12 @@ public class PlayerController : MonoBehaviour
             AddAmmo(ammoPerPickup);
             GameObject.Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.layer == 9) // enemy projectile
+        {
+            TakeDamage(1);
+        }
+
     }
 
     private void TakeDamage(int amount)
