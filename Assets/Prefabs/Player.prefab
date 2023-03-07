@@ -96,7 +96,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5368626787839533185}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!95 &5368626787839533211
 Animator:
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1000
   jumpPower: 400
-  fallSpeed: 20
+  gravityMultiplier: 2
   maxJumpHeight: 10
   usePlayerPoistionAsOffset: 1
   cameraOffset: {x: 0, y: 0}
@@ -191,8 +191,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   gui: {fileID: 0}
-  startingHealth: 5
+  startingHealth: 10
   startingAmmo: 0
+  ammoPerPickup: 5
   bulletPrefab: {fileID: 3145742431903383923, guid: 4005ebe8456444845829aa225bb3ef58, type: 3}
   spawnOffsetDistance: 1.5
   delayBetweenShot: 0.2

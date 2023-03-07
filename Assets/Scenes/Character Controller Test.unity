@@ -1888,7 +1888,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1286359987
 Transform:
   m_ObjectHideFlags: 0
@@ -2960,7 +2960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2105744420777260722, guid: 37d51bab8f77c834e8364512df478d19, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2105744420777260726, guid: 37d51bab8f77c834e8364512df478d19, type: 3}
       propertyPath: walkSpeed
@@ -2991,8 +2991,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 309804378, guid: 05706ecfa9a96eb4787f522d6bb0a79f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 309804378, guid: 05706ecfa9a96eb4787f522d6bb0a79f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: e93422441cb51824faee0555a5476ff5, type: 2}
     - target: {fileID: 5368626787839533184, guid: 05706ecfa9a96eb4787f522d6bb0a79f, type: 3}
-      propertyPath: m_CollisionDetection
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368626787839533184, guid: 05706ecfa9a96eb4787f522d6bb0a79f, type: 3}
+      propertyPath: m_GravityScale
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5368626787839533185, guid: 05706ecfa9a96eb4787f522d6bb0a79f, type: 3}
@@ -3007,18 +3019,26 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 84937919}
-    - target: {fileID: 5368626787839533210, guid: 05706ecfa9a96eb4787f522d6bb0a79f, type: 3}
-      propertyPath: startingHealth
+    - target: {fileID: 5368626787839533212, guid: 05706ecfa9a96eb4787f522d6bb0a79f, type: 3}
+      propertyPath: jumpPower
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5368626787839533212, guid: 05706ecfa9a96eb4787f522d6bb0a79f, type: 3}
       propertyPath: moveSpeed
-      value: 1000
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368626787839533212, guid: 05706ecfa9a96eb4787f522d6bb0a79f, type: 3}
+      propertyPath: gravityMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5368626787839533213, guid: 05706ecfa9a96eb4787f522d6bb0a79f, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5368626787839533213, guid: 05706ecfa9a96eb4787f522d6bb0a79f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: e93422441cb51824faee0555a5476ff5, type: 2}
     - target: {fileID: 5368626787839533214, guid: 05706ecfa9a96eb4787f522d6bb0a79f, type: 3}
       propertyPath: m_RootOrder
       value: 3
