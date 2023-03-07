@@ -148,8 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   visionRaidus: 5
-  walkSpeed: 1000
+  walkSpeed: 100
   minDistanceFromPlayer: 1
   bullet: {fileID: 3145742431903383923, guid: 113a4ddfa43d31a4d906a81ad5c02355, type: 3}
   fireRate: 1
-  bulletSpawnOffset: {x: -0.5, y: 0}
+  offsetDistance: 1
