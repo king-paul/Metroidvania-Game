@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1620908423389068246}
   - component: {fileID: 1620908423389068247}
   - component: {fileID: 1620908423389068235}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spaceship Alien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,6 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502075360cb750b4a8b36ed73e8969b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 5
+  visionRaidus: 5
+  bullet: {fileID: 3145742431903383923, guid: 113a4ddfa43d31a4d906a81ad5c02355, type: 3}
+  fireRate: 1
+  offsetDistance: 1
   moveSpeed: 1
   dampening: 0.9
   bulletPrefab: {fileID: 3145742431903383923, guid: 113a4ddfa43d31a4d906a81ad5c02355, type: 3}

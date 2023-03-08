@@ -33,7 +33,7 @@ public class PlayerMovment : MonoBehaviour
 
     // components
     private Rigidbody2D body;
-    private Transform camera;
+    private new Transform camera;
     private SpriteRenderer sprite;
     private Animator animator;
 
@@ -122,7 +122,6 @@ public class PlayerMovment : MonoBehaviour
             
         }
     }
-
 
     private void LateUpdate()
     {

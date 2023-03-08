@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2105744420777260723}
   - component: {fileID: 2105744420777260721}
   - component: {fileID: 999059305055161453}
-  - component: {fileID: 2105744420777260726}
+  - component: {fileID: 3828679391800360866}
   m_Layer: 7
   m_Name: Alien
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2105744420777260726
+--- !u!114 &3828679391800360866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,13 +143,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2105744420777260722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc55e38e93f28b64db303c9f2737b678, type: 3}
+  m_Script: {fileID: 11500000, guid: 0edbf63bc03441245a84f14427b7e1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
   visionRaidus: 5
-  walkSpeed: 100
-  minDistanceFromPlayer: 1
   bullet: {fileID: 3145742431903383923, guid: 113a4ddfa43d31a4d906a81ad5c02355, type: 3}
   fireRate: 1
   offsetDistance: 1
+  walkSpeed: 1
+  minDistanceFromPlayer: 2.78

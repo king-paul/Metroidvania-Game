@@ -193,7 +193,7 @@ MonoBehaviour:
   gui: {fileID: 0}
   startingHealth: 10
   startingAmmo: 0
-  ammoPerPickup: 5
+  ammoPerPickup: 15
   bulletPrefab: {fileID: 3145742431903383923, guid: 4005ebe8456444845829aa225bb3ef58, type: 3}
   spawnOffsetDistance: 1.5
   delayBetweenShot: 0.2

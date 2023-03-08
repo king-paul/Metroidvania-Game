@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        origin = transform.position;        
+        origin = transform.position;             
     }
 
     // Update is called once per frame
@@ -40,7 +40,8 @@ public class Bullet : MonoBehaviour
             
         }
 
-        GameObject.Destroy(gameObject);
+        if(collision.gameObject.layer != 8 && collision.gameObject.layer != 9) // bullet layers
+            GameObject.Destroy(gameObject);
     }
 
 }
