@@ -1025,71 +1025,28 @@ CompositeCollider2D:
     m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
---- !u!1 &84937918
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 84937920}
-  - component: {fileID: 84937919}
-  - component: {fileID: 84937921}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &84937919
+--- !u!114 &84937919 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 688865285882166893, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+  m_PrefabInstance: {fileID: 688865285797229266}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 84937918}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b2b7de72d2301a459928154eecb3201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundTiles: {fileID: 1286359989}
-  collisionTiles: {fileID: 50565073}
-  foregroundTiles: {fileID: 236313398}
-  gameOverDialog: {fileID: 940148995}
-  alertMessage: {fileID: 648213160}
-  alertTime: 1
---- !u!4 &84937920
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 84937918}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0831472, y: 0.011511564, z: 0.031586617}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &84937921
+--- !u!114 &84937921 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 688865285882166803, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+  m_PrefabInstance: {fileID: 688865285797229266}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 84937918}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2524ad36c05e1664190d04e43f8a4870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthText: {fileID: 1321164399}
-  ammoText: {fileID: 1353893174}
 --- !u!1 &236313395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2977,6 +2934,91 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0ff8a2c53e36ec418eff3799f1a63e7, type: 3}
+--- !u!1001 &688865285797229266
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 688865285882166802, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 688865285882166802, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.0831472
+      objectReference: {fileID: 0}
+    - target: {fileID: 688865285882166802, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.011511564
+      objectReference: {fileID: 0}
+    - target: {fileID: 688865285882166802, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.031586617
+      objectReference: {fileID: 0}
+    - target: {fileID: 688865285882166802, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 688865285882166802, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 688865285882166802, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 688865285882166802, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 688865285882166802, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 688865285882166802, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 688865285882166802, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 688865285882166803, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 1353893174}
+    - target: {fileID: 688865285882166803, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 1321164399}
+    - target: {fileID: 688865285882166892, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 688865285882166893, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: alertMessage
+      value: 
+      objectReference: {fileID: 648213160}
+    - target: {fileID: 688865285882166893, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: collisionTiles
+      value: 
+      objectReference: {fileID: 50565073}
+    - target: {fileID: 688865285882166893, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: gameOverDialog
+      value: 
+      objectReference: {fileID: 940148995}
+    - target: {fileID: 688865285882166893, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: backgroundTiles
+      value: 
+      objectReference: {fileID: 1286359989}
+    - target: {fileID: 688865285882166893, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
+      propertyPath: foregroundTiles
+      value: 
+      objectReference: {fileID: 236313398}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 24e41c6f4bbdf144f92fce6bb6174ba7, type: 3}
 --- !u!1001 &1620908423331980411
 PrefabInstance:
   m_ObjectHideFlags: 0
