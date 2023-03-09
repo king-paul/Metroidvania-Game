@@ -1932,6 +1932,27 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1242589790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2105744420777260722, guid: 37d51bab8f77c834e8364512df478d19, type: 3}
+  m_PrefabInstance: {fileID: 2105744419869362074}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &1242589797
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242589790}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: e93422441cb51824faee0555a5476ff5, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.01, y: -0.01}
+  m_Size: {x: 0.16, y: 0.4}
+  m_Direction: 0
 --- !u!1 &1286359986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2973,7 +2994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1620908423389068240, guid: e9c5eee5bdf2add47abdcdf64c36e73d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1620908423389068244, guid: e9c5eee5bdf2add47abdcdf64c36e73d, type: 3}
       propertyPath: m_RootOrder
@@ -3077,8 +3098,20 @@ PrefabInstance:
       value: 0.15940282
       objectReference: {fileID: 0}
     - target: {fileID: 2105744420777260721, guid: 37d51bab8f77c834e8364512df478d19, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105744420777260721, guid: 37d51bab8f77c834e8364512df478d19, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: e93422441cb51824faee0555a5476ff5, type: 2}
+    - target: {fileID: 2105744420777260721, guid: 37d51bab8f77c834e8364512df478d19, type: 3}
       propertyPath: m_Offset.x
       value: 0.009711087
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105744420777260721, guid: 37d51bab8f77c834e8364512df478d19, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2105744420777260722, guid: 37d51bab8f77c834e8364512df478d19, type: 3}
       propertyPath: m_Name
@@ -3086,8 +3119,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2105744420777260722, guid: 37d51bab8f77c834e8364512df478d19, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3562029972692863602, guid: 37d51bab8f77c834e8364512df478d19, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 535bfdd38f08eb1409dabc9c3debdbd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37d51bab8f77c834e8364512df478d19, type: 3}
 --- !u!1001 &5368626789069290191

@@ -31,7 +31,8 @@ public abstract class EnemyController : MonoBehaviour
         gameManager = GameManager.Instance;
 
         // ignore collisions between player and enemy
-        Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), player.GetComponent<BoxCollider2D>());        
+        Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), player.GetComponent<BoxCollider2D>());
+        Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), player.GetComponent<BoxCollider2D>());
     }
 
     void Update()

@@ -9,10 +9,14 @@ public class WalkingEnemy : EnemyController
     [Range(0f, 10f)]
     public float minDistanceFromPlayer = 1;
 
+    private Animator animator;
+
     // Start is called before the first frame update
     new void Start()
     {
         base.Start();
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,7 +31,7 @@ public class WalkingEnemy : EnemyController
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            StopMoving();
 
             if (distanceToPlayer <= minDistanceFromPlayer && !hasFired)
             {
@@ -41,24 +45,41 @@ public class WalkingEnemy : EnemyController
     {
         if (transform.position.x > player.position.x)
         {
-            if (SolidTileBelow(Vector2.left)) // ground check
-            {
-                rb.velocity = Vector2.left * walkSpeed;// * Time.deltaTime;
-                Debug.Log("Moving Left");
-            }
+            if (SolidTileBelow(Vector2.left)) // ground check            
+                MoveLeft();
             else
-                rb.velocity = Vector2.zero;
+                StopMoving();
         }
         else if (transform.position.x < player.position.x)
         {
             if (SolidTileBelow(Vector2.right)) // ground check
-            {
-                rb.velocity = Vector2.right * walkSpeed;// * Time.deltaTime;
-                Debug.Log("Moving Right");
-            }
+
+                MoveRight();
             else
-                rb.velocity = Vector2.zero;
+                StopMoving();
         }
+    }
+
+    private void MoveLeft()
+    {
+        rb.velocity = Vector2.left * walkSpeed;// * Time.deltaTime;
+        animator.SetBool("Walking", true);
+
+        //Debug.Log("Moving Left");
+    }
+
+    private void MoveRight()
+    {
+        rb.velocity = Vector2.right * walkSpeed;// * Time.deltaTime;
+        animator.SetBool("Walking", true);
+
+        //Debug.Log("Moving Right");
+    }
+
+    private void StopMoving()
+    {
+        rb.velocity = Vector2.zero;
+        animator.SetBool("Walking", false);
     }
 
     // Checks if there is a solide tile below to the left or right of the enemy
