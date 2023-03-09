@@ -15,9 +15,17 @@ public class PlayerController : MonoBehaviour
 
     [Header("Projectile Firing")]
     public GameObject bulletPrefab;
+    public Transform gunPivot;
+    public Transform crosshair;
     public float spawnOffsetDistance = 0.5f;
     public float delayBetweenShot = 0.1f;
     public bool continuousFire = true;
+
+    [Header("Aiming")]
+    public float aimingLineLength = 5;
+    public bool followCursorPosition = false;
+    public bool rotateWithMouseWheel = false;
+    public float mouseScrollSpeed = 1;
 
     private bool canShoot = true;
     private int health;
@@ -25,17 +33,27 @@ public class PlayerController : MonoBehaviour
 
     private Portal portal = null;
 
+    // aiming
+    private LineRenderer aimingLine;
+    private float pivotAngle = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         health = startingHealth;
         ammo = startingAmmo;
+
+        aimingLine = GetComponentInChildren<LineRenderer>();
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(canShoot)
+        Aim();
+
+        if (canShoot)
         {
             if (ammo > 0)
             {
@@ -61,12 +79,8 @@ public class PlayerController : MonoBehaviour
     {
         canShoot = false;
 
-        Vector2 clickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (clickedPos - (Vector2)transform.position).normalized;
-        //Debug.Log("Direction: " + direction);
+        Vector2 direction = (crosshair.position - transform.position).normalized;
         Vector2 spawnPosition = (Vector2)transform.position + direction * spawnOffsetDistance;
-        //Debug.Log("Spawn Position: " + spawnPosition);
-        //Debug.Log("Rotation: " + );
         var bulletInstance = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
         //Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, -direction.x) * Mathf.Rad2Deg));
         //bulletInstance.transform.forward = direction;
@@ -136,5 +150,70 @@ public class PlayerController : MonoBehaviour
         ammo += ammoPerPickup;
         gui.SetAmmoText(ammo);
     }
+
+    private void Aim()
+    {
+        //Input.Mouse
+
+        //Debug.Log("Mouse Position: " + Input.mousePosition);
+
+        Vector2 direction = new Vector2();
+        var sprite = GetComponent<SpriteRenderer>();
+
+        if (rotateWithMouseWheel)
+        {
+
+            if (Input.mouseScrollDelta.y > 0)
+            {
+                pivotAngle += mouseScrollSpeed;
+            }
+            else if (Input.mouseScrollDelta.y < 0)
+            {
+                pivotAngle -= mouseScrollSpeed;
+            }
+
+            if (pivotAngle >= 360 || pivotAngle <= -360)
+                pivotAngle = 0;
+
+            gunPivot.rotation = Quaternion.Euler(0, 0, pivotAngle);
+
+            direction = (crosshair.position - transform.position).normalized;
+        }
+        else if (followCursorPosition)
+        {
+            
+            Vector2 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            direction = (worldPos - (Vector2)transform.position).normalized;
+
+            // rotate the pivot
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            gunPivot.rotation = Quaternion.Euler(0, 0, angle);  
+        }
+        else
+        {
+            pivotAngle -= Input.GetAxisRaw("Mouse X");
+            pivotAngle += Input.GetAxisRaw("Mouse Y");            
+
+            if (pivotAngle >= 360 || pivotAngle <= -360)
+                pivotAngle = 0;
+
+            gunPivot.rotation = Quaternion.Euler(0, 0, pivotAngle);
+
+            direction = (crosshair.position - transform.position).normalized;
+        }
+
+        // flip the sprite if pointing to the left
+        if (direction.x < 0)
+            sprite.flipX = true;
+        else
+            sprite.flipX = false;
+
+        // update the line            
+        Vector2 startPos = (Vector2)transform.position + direction * spawnOffsetDistance;        
+
+        aimingLine.SetPosition(0, startPos);
+        aimingLine.SetPosition(1, crosshair.position);
+    }    
+
 
 }
