@@ -12,7 +12,8 @@ using static UnityEditor.PlayerSettings;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovment : MonoBehaviour
 {
-    public float moveSpeed = 10;
+    public float walkSpeed = 10;
+    public float climbSpeed = 1;
 
     [Header("Jumping and falling")]
     public float jumpPower = 20;
@@ -38,10 +39,9 @@ public class PlayerMovment : MonoBehaviour
     private Animator animator;
 
     private bool onGround = false;
-    private float inputX;
+    private float inputX, inputY;
     private bool jumping = false;
     private bool jumpPressed = false;
-
     private Vector2 jumpPoint;
 
     // Start is called before the first frame update
@@ -65,7 +65,8 @@ public class PlayerMovment : MonoBehaviour
     void Update()
     {
         jumpPressed = Input.GetButtonDown("Jump");
-        inputX = Input.GetAxisRaw("Horizontal");        
+        inputX = Input.GetAxisRaw("Horizontal");
+        inputY = Input.GetAxisRaw("Vertical");
 
         // ground check
         onGround = PlayerOnGround();
@@ -97,9 +98,9 @@ public class PlayerMovment : MonoBehaviour
     {
         // horizontal movement
         if (inputX < 0)
-            body.velocity =new Vector2(-moveSpeed, body.velocity.y);
+            body.velocity =new Vector2(-walkSpeed, body.velocity.y);
         else if (inputX > 0)
-            body.velocity = new Vector2(moveSpeed, body.velocity.y);
+            body.velocity = new Vector2(walkSpeed, body.velocity.y);
         else if (onGround)
             body.velocity = new Vector2(0, body.velocity.y);
     }
@@ -121,6 +122,7 @@ public class PlayerMovment : MonoBehaviour
             body.velocity = new Vector2(body.velocity.x, Physics.gravity.y);
             
         }
+
     }
 
     private void LateUpdate()
@@ -161,6 +163,23 @@ public class PlayerMovment : MonoBehaviour
             return true;        
 
         return false;            
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 11) // climbable layer
+        {
+            body.gravityScale = 0;
+            body.velocity = new Vector2(body.velocity.x, inputY * climbSpeed);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 11) // climbable layer
+        {
+            body.gravityScale = gravityMultiplier;
+        }
     }
 
 }
