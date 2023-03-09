@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Level 2 Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -1315854794, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 783814664, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 165954074, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -2081839830, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -197850438, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -1462688313, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 1250515826, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 711093649, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -159115649, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -716695602, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -1540565264, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 530834980, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -1130850350, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 582065516, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -1253645179, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 45131245, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 1690840354, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 1949346516, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -1159389858, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -1541591425, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -1353018653, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 367447640, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -2125569690, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -260224717, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -1632727530, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 1825306313, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -1212560262, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 151206375, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: 46495191, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  - {fileID: -684312220, guid: 08d9cd60a9c4f1f4a9c5007cb417eb57, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Level 2_0
+  - Level 2_1
+  - Level 2_2
+  - Level 2_3
+  - Level 2_4
+  - Level 2_5
+  - Level 2_6
+  - Level 2_7
+  - Level 2_8
+  - Level 2_9
+  - Level 2_13
+  - Level 2_12
+  - Level 2_11
+  - Level 2_10
+  - Level 2_26
+  - Level 2_17
+  - Level 2_27
+  - Level 2_16
+  - Level 2_24
+  - Level 2_15
+  - Level 2_25
+  - Level 2_14
+  - Level 2_22
+  - Level 2_23
+  - Level 2_20
+  - Level 2_19
+  - Level 2_21
+  - Level 2_18
+  - Level 2_28
+  - Level 2_29
+  m_RenderDataMap: {}
+  m_Tag: Level 2 Atlas
+  m_IsVariant: 0
