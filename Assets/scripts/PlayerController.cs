@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     private int health;
     private int ammo;
 
+    private Portal portal = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,12 @@ public class PlayerController : MonoBehaviour
             {
                 StartCoroutine(gameManager.ShowAlert());
             }
+        }
+
+        // up pressed while standing infront of a portal
+        if (Input.GetAxis("Vertical") > 0 && portal)
+        {
+            portal.EnterPortal();
         }
     }
 
@@ -94,6 +102,20 @@ public class PlayerController : MonoBehaviour
             TakeDamage(1);
         }
 
+        if(collision.gameObject.layer == 12) // portal layer
+        {           
+            portal = collision.GetComponent<Portal>();
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 12) // portal layer
+        {
+            
+            portal = null;
+        }
     }
 
     private void TakeDamage(int amount)
