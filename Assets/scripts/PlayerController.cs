@@ -81,9 +81,9 @@ public class PlayerController : MonoBehaviour
 
         Vector2 direction = (crosshair.position - transform.position).normalized;
         Vector2 spawnPosition = (Vector2)transform.position + direction * spawnOffsetDistance;
-        var bulletInstance = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
-        //Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, -direction.x) * Mathf.Rad2Deg));
-        //bulletInstance.transform.forward = direction;
+        float spawnAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90;
+        var bulletInstance = Instantiate(bulletPrefab, spawnPosition, Quaternion.Euler(0, 0, spawnAngle));
+        
         bulletInstance.GetComponent<Bullet>().Direction = direction;
 
         ammo--;
@@ -153,10 +153,6 @@ public class PlayerController : MonoBehaviour
 
     private void Aim()
     {
-        //Input.Mouse
-
-        //Debug.Log("Mouse Position: " + Input.mousePosition);
-
         Vector2 direction = new Vector2();
         var sprite = GetComponent<SpriteRenderer>();
 
