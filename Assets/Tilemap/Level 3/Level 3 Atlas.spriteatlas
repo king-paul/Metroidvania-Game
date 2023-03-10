@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Level 3 Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 1396988968, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1516473566, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 49598243, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1013156654, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -274645646, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -1720552665, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1041687888, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -1242392719, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 2014347445, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1030811682, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1892785287, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -1192686298, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 869296678, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -1782375381, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -800494170, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1381325435, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -246256031, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -2025669614, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -385741943, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 824914998, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1370810594, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 788799388, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1205545620, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -2139001213, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -278211703, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1165166331, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1211730080, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -654211678, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: -1434420774, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1892276524, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1647735368, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 1924700337, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  - {fileID: 2140824642, guid: be5542808629a584b96dde6197eec6d0, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Level 3_18
+  - Level 3_19
+  - Level 3_10
+  - Level 3_11
+  - Level 3_12
+  - Level 3_13
+  - Level 3_14
+  - Level 3_15
+  - Level 3_16
+  - Level 3_17
+  - Level 3_9
+  - Level 3_8
+  - Level 3_1
+  - Level 3_0
+  - Level 3_3
+  - Level 3_2
+  - Level 3_5
+  - Level 3_4
+  - Level 3_7
+  - Level 3_6
+  - Level 3_21
+  - Level 3_20
+  - Level 3_23
+  - Level 3_22
+  - Level 3_25
+  - Level 3_24
+  - Level 3_27
+  - Level 3_26
+  - Level 3_29
+  - Level 3_28
+  - Level 3_32
+  - Level 3_30
+  - Level 3_31
+  m_RenderDataMap: {}
+  m_Tag: Level 3 Atlas
+  m_IsVariant: 0
