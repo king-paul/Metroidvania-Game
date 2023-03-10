@@ -4,8 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
-{
-    public GameManager gameManager;
+{    
     public HUD gui;
 
     [Header("Player Stats")]
@@ -37,9 +36,12 @@ public class PlayerController : MonoBehaviour
     private LineRenderer aimingLine;
     private float pivotAngle = 0;
 
+    GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.Instance;
         health = startingHealth;
         ammo = startingAmmo;
 
@@ -212,11 +214,14 @@ public class PlayerController : MonoBehaviour
         else
             sprite.flipX = false;
 
-        // update the line            
-        Vector2 startPos = (Vector2)transform.position + direction * spawnOffsetDistance;        
+        // update the line
+        if (aimingLine)
+        {
+            Vector2 startPos = (Vector2)transform.position + direction * spawnOffsetDistance;
 
-        aimingLine.SetPosition(0, startPos);
-        aimingLine.SetPosition(1, crosshair.position);
+            aimingLine.SetPosition(0, startPos);
+            aimingLine.SetPosition(1, crosshair.position);
+        }
     }    
 
 
