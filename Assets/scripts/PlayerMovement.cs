@@ -10,7 +10,7 @@ using static UnityEditor.PlayerSettings;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovment : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float walkSpeed = 10;
     public float climbSpeed = 1;
@@ -20,9 +20,9 @@ public class PlayerMovment : MonoBehaviour
     public float gravityMultiplier = 1;
     public float maxJumpHeight = 3;
 
-    [Header("Camera")]
-    public bool usePlayerPoistionAsOffset = true;
-    public Vector2 cameraOffset;
+    //[Header("Camera")]
+    //public bool usePlayerPoistionAsOffset = true;
+    //public Vector2 cameraOffset;
 
     [Header("Layers")]
     public LayerMask groundLayer;
@@ -51,13 +51,6 @@ public class PlayerMovment : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         camera = Camera.main.transform;
-
-        if (usePlayerPoistionAsOffset)
-        {
-            cameraOffset.x = -transform.position.x;
-            cameraOffset.y = -transform.position.y;
-        }
-
     }
 
 
@@ -132,11 +125,9 @@ public class PlayerMovment : MonoBehaviour
             sprite.flipX = false;
 
         if (body.velocity.x < 0) // facing left
-            sprite.flipX = true;            
+            sprite.flipX = true;
 
-        // make camera follow player
-        camera.position = new Vector3(transform.position.x + cameraOffset.x, 
-                                      transform.position.y + cameraOffset.y, -10);
+        
     }
 
     private bool PlayerOnGround()
@@ -181,5 +172,6 @@ public class PlayerMovment : MonoBehaviour
             body.gravityScale = gravityMultiplier;
         }
     }
+    
 
 }

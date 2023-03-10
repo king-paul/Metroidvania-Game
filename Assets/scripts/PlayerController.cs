@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameManager.GameRunning)
+            return;
+
         Aim();
 
         if (canShoot)
@@ -72,6 +75,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis("Vertical") > 0 && portal)
         {
             portal.EnterPortal();
+        }
+
+        if (transform.position.y < gameManager.minYPosition)
+        {
+            gameManager.EndGame();
         }
     }
 
