@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private LineRenderer aimingLine;
     private float pivotAngle = 0;
 
+    Animator animator;
     GameManager gameManager;
 
     // Start is called before the first frame update
@@ -46,6 +47,9 @@ public class PlayerController : MonoBehaviour
         ammo = startingAmmo;
 
         aimingLine = GetComponentInChildren<LineRenderer>();
+        animator = GetComponent<Animator>();
+
+        gunPivot.gameObject.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -56,22 +60,7 @@ public class PlayerController : MonoBehaviour
         if (!gameManager.GameRunning)
             return;
 
-        Aim();
-
-        if (canShoot)
-        {
-            if (ammo > 0)
-            {
-                if (continuousFire && Input.GetButton("Fire1"))
-                    StartCoroutine(FireShot());
-                else if (Input.GetButtonDown("Fire1"))
-                    StartCoroutine(FireShot());
-            }
-            else if(Input.GetButtonDown("Fire1"))
-            {
-                StartCoroutine(gameManager.ShowAlert());
-            }
-        }
+        UpdateFireInput();
 
         // up pressed while standing infront of a portal
         if (Input.GetAxis("Vertical") > 0 && portal)
@@ -85,9 +74,40 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void UpdateFireInput()
+    {
+        if (Input.GetButton("Fire1") || Input.GetButton("Fire2"))
+        {
+            //if (Input.GetButtonDown("Fire1"))
+                gunPivot.gameObject.SetActive(true);
+
+            Aim();
+        }
+
+        if (Input.GetButtonUp("Fire1") || Input.GetButtonUp("Fire2"))
+            gunPivot.gameObject.SetActive(false);
+
+        if (canShoot)
+        {
+            if (ammo > 0)
+            {
+                if (continuousFire && Input.GetButton("Fire1"))
+                    StartCoroutine(FireShot());
+                else if (Input.GetButtonDown("Fire1"))
+                    StartCoroutine(FireShot());
+            }
+            else if (Input.GetButtonDown("Fire1"))
+            {
+                StartCoroutine(gameManager.ShowAlert());
+            }
+        }
+    }
+
     private IEnumerator FireShot()
     {
         canShoot = false;
+
+        animator.SetTrigger("Shoot"); // plays shooting animation
 
         Vector2 direction = (crosshair.position - transform.position).normalized;
         Vector2 spawnPosition = (Vector2)transform.position + direction * spawnOffsetDistance;
