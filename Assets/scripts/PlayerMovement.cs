@@ -12,17 +12,17 @@ using static UnityEditor.PlayerSettings;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float walkSpeed = 10;
-    public float climbSpeed = 1;
+    public float walkSpeed = 10;    
 
     [Header("Jumping and falling")]
     public float jumpPower = 20;
     public float gravityMultiplier = 1;
     public float maxJumpHeight = 3;
 
-    //[Header("Camera")]
-    //public bool usePlayerPoistionAsOffset = true;
-    //public Vector2 cameraOffset;
+    [Header("Climbing")]
+    public float climbSpeed = 1;
+    [Range(0, 0.5f)]
+    public float toleranceFromCenter = 0.1f;
 
     [Header("Layers")]
     public LayerMask groundLayer;
@@ -160,8 +160,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.layer == 11) // climbable layer
         {
-            body.gravityScale = 0;
-            body.velocity = new Vector2(body.velocity.x, inputY * climbSpeed);
+            var collider = collision.GetComponent<TilemapCollider2D>();
+            Vector2 collisionPos = collider.ClosestPoint(transform.position);            
+
+            // check if infront of the collider range
+            if (transform.position.x <= collisionPos.x + toleranceFromCenter &&
+                transform.position.x >= collisionPos.x - toleranceFromCenter)
+            {
+                body.gravityScale = 0;
+                body.velocity = new Vector2(body.velocity.x, inputY * climbSpeed);
+            }
         }
     }
 
