@@ -33,14 +33,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        int collisionLayer = collision.gameObject.layer;
+
         if (this.gameObject.layer == 8 && // player projectile layer
-            collision.gameObject.layer == 7) // enemy layer
+            collisionLayer == 7) // enemy layer
         {
             collision.GetComponent<EnemyController>().TakeDamage(1);
             
         }
 
-        if(collision.gameObject.layer != 8 && collision.gameObject.layer != 9) // bullet layers
+        // destuction layers
+        if(collisionLayer == 3 || collisionLayer == 6 || collisionLayer == 7) 
             GameObject.Destroy(gameObject);
     }
 
