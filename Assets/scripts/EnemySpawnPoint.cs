@@ -27,7 +27,7 @@ public class EnemySpawnPoint : MonoBehaviour
     {
         if(enemyInstance == null && !setTimer)
         {
-            Debug.Log("Enemy destroyed");
+            //Debug.Log("Enemy destroyed");
             setTimer = true;
             Invoke("SpawnEnemy", respawnTime);
         }

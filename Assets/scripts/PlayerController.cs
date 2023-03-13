@@ -52,7 +52,8 @@ public class PlayerController : MonoBehaviour
 
         gunPivot.gameObject.SetActive(false);
 
-        Cursor.lockState = CursorLockMode.Locked;
+        if(!followCursorPosition)
+            Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
