@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         // make camera follow player if still on level
-        if (camera.position.y > GameManager.Instance.minCameraY)
+        if (camera.position.y >= GameManager.Instance.minCameraY)
         {
             camera.position = new Vector3(player.position.x + offsetFromPlayer.x,
                                           player.position.y + offsetFromPlayer.y, -10);

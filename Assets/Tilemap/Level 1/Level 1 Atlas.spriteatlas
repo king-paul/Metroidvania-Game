@@ -54,6 +54,8 @@ SpriteAtlas:
   - {fileID: -2007201431, guid: c86170173f53a0249ab089748251a65d, type: 3}
   - {fileID: -1291019690, guid: c86170173f53a0249ab089748251a65d, type: 3}
   - {fileID: 961130248, guid: c86170173f53a0249ab089748251a65d, type: 3}
+  - {fileID: -1451131570, guid: c86170173f53a0249ab089748251a65d, type: 3}
+  - {fileID: -158021403, guid: c86170173f53a0249ab089748251a65d, type: 3}
   - {fileID: -396273406, guid: c86170173f53a0249ab089748251a65d, type: 3}
   - {fileID: -627665770, guid: c86170173f53a0249ab089748251a65d, type: 3}
   - {fileID: -1960319563, guid: c86170173f53a0249ab089748251a65d, type: 3}
@@ -69,6 +71,8 @@ SpriteAtlas:
   - Level 1_13
   - Level 1_10
   - Level 1_11
+  - Level 1_14
+  - Level 1_15
   - Level 1_7
   - Level 1_6
   - Level 1_5
