@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {    
-    public HUD gui;
-
     [Header("Player Stats")]
     public int startingHealth = 10;
     public int startingAmmo = 0;
@@ -38,11 +36,14 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
     GameManager gameManager;
+    HUD gui;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.Instance;
+        gui = HUD.Instance;
+
         health = startingHealth;
         ammo = startingAmmo;
 

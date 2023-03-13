@@ -10,6 +10,19 @@ public class HUD : MonoBehaviour
 
     private PlayerController player;
 
+    public static HUD Instance { get; private set; } // singleton
+
+    private void Awake()
+    {
+        // If there is an instance, and it is not this one, delete it.
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

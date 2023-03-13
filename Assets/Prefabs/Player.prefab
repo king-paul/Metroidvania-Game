@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 5368626787839533214}
   - component: {fileID: 5368626787839533215}
   - component: {fileID: 5368626787839533213}
+  - component: {fileID: 8268934538301610152}
   - component: {fileID: 5368626787839533184}
   - component: {fileID: 5368626787839533211}
   - component: {fileID: 5368626787839533210}
@@ -345,7 +346,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5368626787839533185}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: e93422441cb51824faee0555a5476ff5, type: 2}
   m_IsTrigger: 0
@@ -364,6 +365,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.31759658, y: 0.61551917}
   m_EdgeRadius: 0
+--- !u!70 &8268934538301610152
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368626787839533185}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: e93422441cb51824faee0555a5476ff5, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0129235, y: -0.012243333}
+  m_Size: {x: 0.29415298, y: 0.61551327}
+  m_Direction: 0
 --- !u!50 &5368626787839533184
 Rigidbody2D:
   serializedVersion: 4
@@ -444,10 +461,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 8
-  climbSpeed: 5
-  jumpPower: 10
+  jumpPower: 12
   gravityMultiplier: 2
-  maxJumpHeight: 10
+  maxJumpHeight: 20
+  climbSpeed: 5
+  toleranceFromCenter: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

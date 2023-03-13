@@ -156,10 +156,16 @@ public class PlayerMovement : MonoBehaviour
         return false;            
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 11)
+            body.velocity = Vector2.zero;
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 11) // climbable layer
-        {
+        {            
             var collider = collision.GetComponent<TilemapCollider2D>();
             Vector2 collisionPos = collider.ClosestPoint(transform.position);            
 
@@ -167,6 +173,9 @@ public class PlayerMovement : MonoBehaviour
             if (transform.position.x <= collisionPos.x + toleranceFromCenter &&
                 transform.position.x >= collisionPos.x - toleranceFromCenter)
             {
+                if (inputX == 0)
+                    body.velocity = new Vector2(0, body.velocity.y);
+
                 body.gravityScale = 0;
                 body.velocity = new Vector2(body.velocity.x, inputY * climbSpeed);
             }
