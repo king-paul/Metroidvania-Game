@@ -274,6 +274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2d2100b73bbd64b837c1031a4f519e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireSound: {fileID: 0}
-  damagedSound: {fileID: 0}
-  dieSound: {fileID: 0}
+  fireSound: {fileID: 8300000, guid: e87f4c339e74f48a7ac8e289c4b26872, type: 3}
+  damagedSound: {fileID: 8300000, guid: 7f79857b28c5749218674d1994791213, type: 3}
+  dieSound: {fileID: 8300000, guid: f19215d2bd0134f37bfa0884c64969db, type: 3}
