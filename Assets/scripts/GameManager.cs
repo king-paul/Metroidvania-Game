@@ -9,11 +9,8 @@ using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
-    /*
-    [Header("Tilemaps")]
-    public Tilemap backgroundTiles;
-    public Tilemap collisionTiles;
-    public Tilemap foregroundTiles;*/
+    [Range(1, 3)]
+    public int level = 1;
 
     [Tooltip("The y coordinate of the bottom boundary")]
     public float minYPosition = -10;
@@ -24,9 +21,11 @@ public class GameManager : MonoBehaviour
     public GameObject alertMessage;
     public float alertTime = 1.0f;
 
-    [Header("Sound Effects")]
+    [Header("Music and Sound Effects")]
+    public AudioClip[] levelTracks;
     public AudioClip gameOverSound;
 
+    private AudioSource musicSource;
     private AudioSource soundSource;
 
     public bool GameRunning { get; private set; } = true;
@@ -46,7 +45,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        musicSource = GetComponents<AudioSource>()[0];
         soundSource = GetComponents<AudioSource>()[1]; // sound effects source
+
+        musicSource.clip = levelTracks[level - 1];
+        musicSource.Play();
 
         gameOverDialog.SetActive(false);
         alertMessage.SetActive(false);
