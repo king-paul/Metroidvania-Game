@@ -6,17 +6,23 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 1;    
     public float maxDistance = 100;
+    [Tooltip("The sound to play when the the bullet hits something other and a character")]
+    public AudioClip destroyedSound;
 
+    private GameManager gameManager;
     private Rigidbody2D rb;
     private float distanceTraveled;
     private Vector2 origin;
+
     public Vector2 Direction { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        origin = transform.position;             
+        origin = transform.position;
+
+        gameManager = GameManager.Instance;
     }
 
     // Update is called once per frame
@@ -38,9 +44,11 @@ public class Bullet : MonoBehaviour
         if (this.gameObject.layer == 8 && // player projectile layer
             collisionLayer == 7) // enemy layer
         {
-            collision.GetComponent<EnemyController>().TakeDamage(1);
-            
+            collision.GetComponent<EnemyController>().TakeDamage(1);            
         }
+
+        if (collisionLayer == 3)
+            gameManager.PlaySound(destroyedSound);
 
         // destuction layers
         if(collisionLayer == 3 || collisionLayer == 6 || collisionLayer == 7) 

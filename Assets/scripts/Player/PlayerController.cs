@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CapsuleCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
-{    
+{
+    #region public variables
     [Header("Player Stats")]
     public int startingHealth = 10;
     public int startingAmmo = 0;
@@ -22,27 +24,33 @@ public class PlayerController : MonoBehaviour
     public float aimingLineLength = 5;
     public bool followCursorPosition = false;
     public bool rotateWithMouseWheel = false;
-    public float mouseScrollSpeed = 1;
+    public float mouseScrollSpeed = 1;    
+    #endregion
 
+    // private varialbes
     private bool canShoot = true;
     private int health;
     private int ammo;
-
     private Portal portal = null;
 
     // aiming
     private LineRenderer aimingLine;
     private float pivotAngle = 0;
 
-    Animator animator;
+    // components
+    Animator animator;    
+
+    // singleton classes
     GameManager gameManager;
     HUD gui;
+    PlayerSound sound;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.Instance;
         gui = HUD.Instance;
+        sound = GetComponent<PlayerSound>();
 
         health = startingHealth;
         ammo = startingAmmo;
@@ -67,6 +75,7 @@ public class PlayerController : MonoBehaviour
         // up pressed while standing infront of a portal
         if (Input.GetAxis("Vertical") > 0 && portal)
         {
+            sound.PlaySound(sound.enterPotalSound);
             portal.EnterPortal();
         }
 
@@ -76,11 +85,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void UpdateFireInput()
+    private void UpdateFireInput()
     {
         if (Input.GetButton("Fire1") || Input.GetButton("Fire2"))
         {
-            //if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1"))
                 gunPivot.gameObject.SetActive(true);
 
             Aim();
@@ -101,6 +110,7 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetButtonDown("Fire1"))
             {
                 StartCoroutine(gameManager.ShowAlert());
+                sound.PlaySound(sound.outOfAmmoSound);
             }
         }
     }
@@ -110,6 +120,7 @@ public class PlayerController : MonoBehaviour
         canShoot = false;
 
         animator.SetTrigger("Shoot"); // plays shooting animation
+        sound.PlaySound(sound.fireSound, 0.5f);
 
         Vector2 direction = (crosshair.position - transform.position).normalized;
         Vector2 spawnPosition = (Vector2)transform.position + direction * spawnOffsetDistance;
@@ -134,7 +145,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Ammo")
@@ -158,8 +168,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 12) // portal layer
-        {
-            
+        {            
             portal = null;
         }
     }
@@ -170,6 +179,7 @@ public class PlayerController : MonoBehaviour
 
         //Debug.Log("Took " + amount + " damage. Health Left: " + health);
         gui.SetHealthText(health);
+        sound.PlaySound(sound.damagedSound);
 
         if (health <=0)
         {
@@ -181,6 +191,7 @@ public class PlayerController : MonoBehaviour
     {
         ammo += ammoPerPickup;
         gui.SetAmmoText(ammo);
+        sound.PlaySound(sound.collectAmmoSound);
     }
 
     private void Aim()

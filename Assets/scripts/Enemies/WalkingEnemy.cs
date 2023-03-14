@@ -119,6 +119,8 @@ public class WalkingEnemy : EnemyController
 
         hasFired = false;
         //Invoke("FireShot", fireRate);
+
+        sound.PlaySound(sound.fireSound);
     }
 
     private new void OnDrawGizmos()

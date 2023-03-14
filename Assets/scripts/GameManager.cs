@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
     public GameObject alertMessage;
     public float alertTime = 1.0f;
 
+    [Header("Sound Effects")]
+    public AudioClip gameOverSound;
+
+    private AudioSource soundSource;
+
     public bool GameRunning { get; private set; } = true;
 
     public static GameManager Instance { get; private set; } // singleton
@@ -41,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        soundSource = GetComponents<AudioSource>()[1]; // sound effects source
+
         gameOverDialog.SetActive(false);
         alertMessage.SetActive(false);
 
@@ -50,6 +57,9 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         gameOverDialog.SetActive(true);
+        GetComponents<AudioSource>()[0].Stop(); // stop music playing
+        PlaySound(gameOverSound);
+
         Time.timeScale = 0;
         GameRunning = false;
 
@@ -75,6 +85,14 @@ public class GameManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void PlaySound(AudioClip clip, float volumeScale = 1)
+    {
+        if (clip != null)
+            soundSource.PlayOneShot(clip, volumeScale);
+        else
+            Debug.LogWarning("Sound effect has not been assigned to PlayerSound.");
     }
 
     private void OnDrawGizmos()

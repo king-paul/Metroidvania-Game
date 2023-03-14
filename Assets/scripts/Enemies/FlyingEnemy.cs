@@ -70,6 +70,8 @@ public class FlyingEnemy : EnemyController
         bullet.GetComponent<Bullet>().Direction = Vector2.down;
 
         hasFired = false;
+
+        sound.PlaySound(sound.fireSound);
     }
 
     private new void OnDrawGizmos()

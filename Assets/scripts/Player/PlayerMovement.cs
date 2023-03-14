@@ -34,9 +34,10 @@ public class PlayerMovement : MonoBehaviour
 
     // components
     private Rigidbody2D body;
-    private new Transform camera;
     private SpriteRenderer sprite;
     private Animator animator;
+
+    private PlayerSound sound;
 
     private bool onGround = false;
     private float inputX, inputY;
@@ -44,15 +45,17 @@ public class PlayerMovement : MonoBehaviour
     private bool jumpPressed = false;
     private Vector2 jumpPoint;
 
+    private bool falling = false;
+
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        camera = Camera.main.transform;
-    }
 
+        sound = GetComponent<PlayerSound>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -63,9 +66,14 @@ public class PlayerMovement : MonoBehaviour
 
         // ground check
         onGround = PlayerOnGround();
-
+   
         if (body.velocity.y <= 0)
+        {
             jumping = false;
+
+            if(!onGround)
+                falling = true;
+        }
 
         /*
         if (onGround)
@@ -102,6 +110,9 @@ public class PlayerMovement : MonoBehaviour
     {        
         if (jumpPressed && onGround)
         {
+            if (!jumping)
+                sound.PlaySound(sound.jumpSound);
+
             jumping = true;
             jumpPoint = transform.position;
             body.gravityScale = gravityMultiplier;
@@ -112,8 +123,7 @@ public class PlayerMovement : MonoBehaviour
         if (jumping && Vector2.Distance(transform.position, jumpPoint) > maxJumpHeight)
         {
             Debug.Log("Hit max jump height");
-            body.velocity = new Vector2(body.velocity.x, Physics.gravity.y);
-            
+            body.velocity = new Vector2(body.velocity.x, Physics.gravity.y);            
         }
 
     }
@@ -125,9 +135,7 @@ public class PlayerMovement : MonoBehaviour
             sprite.flipX = false;
 
         if (body.velocity.x < 0) // facing left
-            sprite.flipX = true;
-
-        
+            sprite.flipX = true;        
     }
 
     private bool PlayerOnGround()
@@ -154,6 +162,15 @@ public class PlayerMovement : MonoBehaviour
             return true;        
 
         return false;            
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 3 && falling) // ground layer
+        {
+            sound.PlaySound(sound.landSound);
+            falling = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

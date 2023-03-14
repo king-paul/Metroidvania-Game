@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     public bool usePlayerPoistionAsOffset;
     public Vector2 offsetFromPlayer;
 
-    private Transform camera;
+    private new Transform camera;
     private Transform player;
 
     // Start is called before the first frame update
@@ -34,8 +34,8 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            camera.position = new Vector3(player.position.x + offsetFromPlayer.x,
-                                          GameManager.Instance.minCameraY, -10);
+            //camera.position = new Vector3(player.position.x + offsetFromPlayer.x,
+                                          //GameManager.Instance.minCameraY, -10);
         }
     }
 }

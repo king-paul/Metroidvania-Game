@@ -20,6 +20,8 @@ public abstract class EnemyController : MonoBehaviour
     protected Rigidbody2D rb;
     protected bool hasFired = false;
 
+    protected EnemySound sound;
+
     private GameManager gameManager;
 
     protected void Start()
@@ -28,20 +30,19 @@ public abstract class EnemyController : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
 
         rb = GetComponent<Rigidbody2D>();
+        sound = GetComponent<EnemySound>();
         gameManager = GameManager.Instance;
 
         // ignore collisions between player and enemy
-        if(GetComponent<BoxCollider2D>())
-            Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), player.GetComponent<BoxCollider2D>());
+        if (GetComponent<BoxCollider2D>())
+            Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), player.GetComponent<CapsuleCollider2D>());
 
         if(GetComponent<CapsuleCollider2D>())
-            Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), player.GetComponent<BoxCollider2D>());
+            Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), player.GetComponent<CapsuleCollider2D>());
     }
 
     void Update()
-    {
-        //if (SolidTileBelow(Vector2.right))
-        //rb.AddForce(Vector2.right * walkSpeed * Time.deltaTime);
+    {        
 
     }
 
@@ -49,8 +50,15 @@ public abstract class EnemyController : MonoBehaviour
     {
         health -= amount;
 
-        if(health <= 0)
-            GameObject.Destroy(gameObject);
+        if (health <= 0)
+        {
+            gameManager.PlaySound(sound.dieSound);
+            GameObject.Destroy(gameObject);            
+        }
+        else
+        {
+            sound.PlaySound(sound.damagedSound);
+        }
     }
 
     protected void OnDrawGizmos()
