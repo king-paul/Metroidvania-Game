@@ -271,5 +271,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireSound: {fileID: 8300000, guid: ca78a31a908b1425ba994e3b57fc357f, type: 3}
-  damagedSound: {fileID: 8300000, guid: 7f79857b28c5749218674d1994791213, type: 3}
-  dieSound: {fileID: 8300000, guid: f19215d2bd0134f37bfa0884c64969db, type: 3}
+  damagedSound: {fileID: 8300000, guid: 01fd0bdeb57762a41a3752bb53c2f5f1, type: 3}
+  dieSound: {fileID: 8300000, guid: 492a3ef2f4068bf4aa3a3f449a949a24, type: 3}
