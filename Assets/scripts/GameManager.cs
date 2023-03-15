@@ -48,11 +48,16 @@ public class GameManager : MonoBehaviour
         musicSource = GetComponents<AudioSource>()[0];
         soundSource = GetComponents<AudioSource>()[1]; // sound effects source
 
-        musicSource.clip = levelTracks[level - 1];
-        musicSource.Play();
+        if (levelTracks.Length > 0) { 
+            musicSource.clip = levelTracks[level - 1];
+            musicSource.Play();
+        }
 
-        gameOverDialog.SetActive(false);
-        alertMessage.SetActive(false);
+        if(gameOverDialog)
+            gameOverDialog.SetActive(false);
+
+        if(alertMessage)
+            alertMessage.SetActive(false);
 
         Time.timeScale = 1;
     }
